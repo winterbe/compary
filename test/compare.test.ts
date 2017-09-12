@@ -1,4 +1,4 @@
-import {compare} from "../src/Comparator";
+import {compare} from "../src/index";
 
 describe("compare", () => {
 

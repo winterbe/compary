@@ -2,9 +2,9 @@
   "name": "compary",
   "version": "0.1.0",
   "description": "A library for composing complex compare-functions",
-  "main": "lib/Compary.js",
+  "main": "lib/index.js",
   "umd:main": "lib-umd/compary.js",
-  "typings": "lib/Compary.d.ts",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "test": "jest",
     "watch": "jest --watch --notify",
