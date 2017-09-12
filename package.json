@@ -1,0 +1,77 @@
+{
+  "name": "compary",
+  "version": "0.1.0",
+  "description": "A library for composing complex compare-functions",
+  "main": "lib/Compary.js",
+  "umd:main": "lib-umd/compary.js",
+  "typings": "lib/Compary.d.ts",
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watch --notify",
+    "coverage": "rimraf coverage && jest --coverage",
+    "travis": "yarn run lint && yarn test",
+    "lint": "node_modules/.bin/tslint -c tslint.json src/**/*.ts test/**/*.ts",
+    "docs": "rimraf docs && typedoc --name Compary --readme APIDOC.md --module commonjs --out docs --target es6 --hideGenerator --gaID UA-48569937-1 src",
+    "docs-publish": "yarn run docs && touch docs/.nojekyll && gh-pages -d docs -t",
+    "build": "rimraf lib && rimraf lib-umd && yarn run lint && tsc && yarn test && webpack && size-limit",
+    "build-prod": "yarn run build && yarn run docs-publish",
+    "prepublishOnly": "yarn run build-prod"
+  },
+  "author": "Benjamin Winterberg",
+  "homepage": "http://winterbe.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/winterbe/compary.git"
+  },
+  "bugs": {
+    "url": "https://github.com/winterbe/compary/issues"
+  },
+  "files": [
+    "lib",
+    "lib-umd",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^20.0.8",
+    "awesome-typescript-loader": "^3.2.3",
+    "gh-pages": "^1.0.0",
+    "jest": "^21.0.1",
+    "rimraf": "^2.6.1",
+    "size-limit": "^0.11.0",
+    "tslint": "^5.7.0",
+    "typedoc": "^0.8.0",
+    "typescript": "^2.5.2",
+    "webpack": "^3.5.5"
+  },
+  "dependencies": {},
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.ts$": "<rootDir>/preprocessor.js"
+    },
+    "testMatch": [
+      "**/test/*.ts"
+    ]
+  },
+  "size-limit": [
+    {
+      "path": "lib-umd/compary.min.js",
+      "limit": "1 KB"
+    }
+  ],
+  "keywords": [
+    "compare",
+    "comparator",
+    "comparison",
+    "compose",
+    "functional",
+    "sort"
+  ]
+}
